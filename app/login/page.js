@@ -30,8 +30,8 @@ export default function Login() {
       minHeight: '100vh', 
       display: 'flex', 
       justifyContent: 'center', 
-      alignItems: 'flex-start', // Mudamos de center para flex-start
-      paddingTop: '12vh', // Isso empurra o bloco para cima de forma elegante
+      alignItems: 'flex-start', 
+      paddingTop: '12vh', 
       position: 'relative' 
     }}>
       

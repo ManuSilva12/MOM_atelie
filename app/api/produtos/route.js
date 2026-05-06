@@ -17,7 +17,6 @@ export async function GET() {
 
     return NextResponse.json(produtosLimpos);
   } catch (error) {
-    // ESTA LINHA É A MAIS IMPORTANTE: Olhe o terminal do VS Code após salvar
     console.error("ERRO NO BACK4APP:", error.message);
     
     return NextResponse.json({ error: error.message }, { status: 500 });

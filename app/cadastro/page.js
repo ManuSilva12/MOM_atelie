@@ -17,10 +17,10 @@ export default function Cadastro() {
     setCarregando(true);
     
     const user = new Parse.User();
-    user.set("username", email); // O Parse usa username, aqui usamos o email como tal
+    user.set("username", email); 
     user.set("email", email);
     user.set("password", senha);
-    user.set("nomeCompleto", nome); // Campo extra se desejar salvar o nome
+    user.set("nomeCompleto", nome); 
 
     try {
       await user.signUp();
@@ -45,7 +45,7 @@ export default function Cadastro() {
       paddingBottom: '40px'
     }}>
       
-      {/* Botão Voltar no canto superior esquerdo */}
+
       <Link href="/" style={{ 
         position: 'absolute', 
         top: '30px', 
@@ -63,7 +63,7 @@ export default function Cadastro() {
 
       <div style={{ width: '100%', maxWidth: '360px', textAlign: 'center' }}>
         
-        {/* Logo imponente igual ao login */}
+
         <img 
           src="/sublogo.png" 
           alt="MOM" 
