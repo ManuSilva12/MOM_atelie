@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Parse from '../../lib/parse'; 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { FormInput } from '../components/FormInput';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -25,65 +26,70 @@ export default function Login() {
   };
 
   return (
-    <main style={{ 
-      backgroundColor: '#efede1', 
-      minHeight: '100vh', 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'flex-start', 
-      paddingTop: '12vh', 
-      position: 'relative' 
-    }}>
+    <main
+      className="
+        bg-[#efede1]
+        min-h-screen
+        flex
+        justify-center
+        items-start
+        pt-[12vh]
+        relative
+      "
+    >
       
-      <Link href="/" style={{ 
-        position: 'absolute', 
-        top: '30px', 
-        left: '40px', 
-        textDecoration: 'none', 
-        color: '#213131', 
-        fontFamily: 'Poppins', 
-        fontSize: '0.7rem', 
-        letterSpacing: '2px', 
-        fontWeight: 'bold', 
-        opacity: '0.5' 
-      }}>
+      <Link href="/" className="
+          absolute
+          top-[30px]
+          left-[40px]
+          no-underline
+          text-[#213131]
+          text-[0.7rem]
+          tracking-[2px]
+          font-bold
+          opacity-50
+          font-['Poppins']
+        "
+      >
         ← VOLTAR PARA O INÍCIO
       </Link>
 
-      <div style={{ width: '100%', maxWidth: '360px', textAlign: 'center' }}>
+      <div className="w-full max-w-[360px] text-center">
         
         <img 
           src="/sublogo.png" 
           alt="MOM" 
-          style={{ width: '220px', height: 'auto', display: 'block', margin: '0 auto 10px' }} 
+          className="w-[220px] h-auto block mx-auto mb-[10px]" 
         />
         
-        <h2 style={{ fontFamily: 'Poppins', color: '#d6988e', letterSpacing: '4px', fontSize: '0.8rem', marginBottom: '35px', fontWeight: '400' }}>
+        <h2 className="font-['Poppins'] text-[#d6988e] tracking-[4px] text-[0.8rem] mb-[35px] font-light">
           BEM-VINDA DE VOLTA
         </h2>
 
-        <form onSubmit={handleLogin} style={{ width: '100%', textAlign: 'left' }}>
-          <div style={{ marginBottom: '18px' }}>
-            <label style={labelStyle}>E-MAIL</label>
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
-          </div>
-          <div style={{ marginBottom: '30px' }}>
-            <label style={labelStyle}>SENHA</label>
-            <input type="password" required value={senha} onChange={(e) => setSenha(e.target.value)} style={inputStyle} />
-          </div>
-          <button type="submit" disabled={carregando} style={{ ...buttonStyle, backgroundColor: carregando ? '#ccc' : '#213131' }}>
+        <form onSubmit={handleLogin} className="w-full text-left">
+          <FormInput 
+            label="E-MAIL" 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            placeholder="Digite seu e-mail" 
+          />
+          <FormInput 
+            label="SENHA" 
+            type="password" 
+            value={senha} 
+            onChange={(e) => setSenha(e.target.value)} 
+            placeholder="Digite sua senha" 
+          />
+          <button type="submit" disabled={carregando} className="w-full py-4 bg-[#213131] text-[#efede1] border-none cursor-pointer font-['Poppins'] text-[0.75rem] tracking-[2px] font-bold">
             {carregando ? 'ENTRANDO...' : 'ACESSAR CONTA'}
           </button>
         </form>
 
-        <Link href="/cadastro" style={{ marginTop: '30px', display: 'block', color: '#213131', fontSize: '0.75rem', textDecoration: 'none', fontFamily: 'Poppins' }}>
+        <Link href="/cadastro" className="mt-[30px] block text-[#213131] text-[0.75rem] no-underline font-['Poppins']">
           Ainda não tem acesso? <strong>Cadastre-se</strong>
         </Link>
       </div>
     </main>
   );
 }
-
-const labelStyle = { display: 'block', fontSize: '0.65rem', color: '#213131', marginBottom: '5px', letterSpacing: '1px', fontWeight: '600' };
-const inputStyle = { width: '100%', padding: '8px 0', border: 'none', borderBottom: '1px solid #213131', background: 'transparent', outline: 'none', fontFamily: 'Poppins', fontSize: '1rem' };
-const buttonStyle = { width: '100%', padding: '16px', color: '#efede1', border: 'none', cursor: 'pointer', fontFamily: 'Poppins', letterSpacing: '2px', fontSize: '0.75rem', fontWeight: 'bold' };
