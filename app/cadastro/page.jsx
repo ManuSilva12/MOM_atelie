@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Parse from '../../lib/parse'; 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { FormInput } from '../components/FormInput';
 
 export default function Cadastro() {
   const [nome, setNome] = useState('');
@@ -34,34 +35,17 @@ export default function Cadastro() {
   };
 
   return (
-    <main style={{ 
-      backgroundColor: '#efede1', 
-      minHeight: '100vh', 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'flex-start', 
-      paddingTop: '10vh', 
-      position: 'relative',
-      paddingBottom: '40px'
-    }}>
-      
+    <main 
+    className='bg-[#efede1] min-h-screen flex items-center justify-center font-Poppins relative px-4'
+    >
 
-      <Link href="/" style={{ 
-        position: 'absolute', 
-        top: '30px', 
-        left: '40px', 
-        textDecoration: 'none', 
-        color: '#213131', 
-        fontFamily: 'Poppins', 
-        fontSize: '0.7rem', 
-        letterSpacing: '2px', 
-        fontWeight: 'bold', 
-        opacity: '0.5' 
-      }}>
+      <Link href="/" 
+      className='absolute top-6 left-6 text-[#213131] text-[0.75rem] font-bold hover:underline'
+      >
         ← VOLTAR PARA O INÍCIO
       </Link>
 
-      <div style={{ width: '100%', maxWidth: '360px', textAlign: 'center' }}>
+      <div style={{  width: '100%', maxWidth: '360px', textAlign: 'center' }}>
         
 
         <img 
@@ -75,20 +59,41 @@ export default function Cadastro() {
         </h2>
 
         <form onSubmit={handleCadastro} style={{ width: '100%', textAlign: 'left' }}>
-          <div style={{ marginBottom: '18px' }}>
-            <label style={labelStyle}>NOME COMPLETO</label>
-            <input type="text" required value={nome} onChange={(e) => setNome(e.target.value)} style={inputStyle} />
-          </div>
+          <FormInput 
+            label="NOME COMPLETO"
+            type="text"
+            required
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            placeholder={"Digite seu nome completo"}
+          />
 
-          <div style={{ marginBottom: '18px' }}>
-            <label style={labelStyle}>E-MAIL</label>
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
-          </div>
+          <FormInput 
+            label="E-MAIL"
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={"Digite seu e-mail"}
+          />
 
-          <div style={{ marginBottom: '30px' }}>
-            <label style={labelStyle}>SENHA</label>
-            <input type="password" required value={senha} onChange={(e) => setSenha(e.target.value)} style={inputStyle} />
-          </div>
+          <FormInput 
+            label="SENHA"
+            type="password"
+            required
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            placeholder={"Digite uma senha"}
+          />
+
+          <FormInput 
+            label="CONFIRMAR SENHA"
+            type="password"
+            required
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            placeholder={"Digite novamente a senha"}
+          />
 
           <button type="submit" disabled={carregando} style={{ ...buttonStyle, backgroundColor: carregando ? '#ccc' : '#213131' }}>
             {carregando ? 'CADASTRANDO...' : 'FINALIZAR CADASTRO'}
@@ -103,6 +108,4 @@ export default function Cadastro() {
   );
 }
 
-const labelStyle = { display: 'block', fontSize: '0.65rem', color: '#213131', marginBottom: '5px', letterSpacing: '1px', fontWeight: '600' };
-const inputStyle = { width: '100%', padding: '8px 0', border: 'none', borderBottom: '1px solid #213131', background: 'transparent', outline: 'none', fontFamily: 'Poppins', fontSize: '1rem' };
 const buttonStyle = { width: '100%', padding: '16px', color: '#efede1', border: 'none', cursor: 'pointer', fontFamily: 'Poppins', letterSpacing: '2px', fontSize: '0.75rem', fontWeight: 'bold' };
